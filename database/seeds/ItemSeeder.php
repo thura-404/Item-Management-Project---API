@@ -1,5 +1,6 @@
 <?php
 
+use App\models\Item;
 use Illuminate\Database\Seeder;
 
 class ItemSeeder extends Seeder
@@ -12,5 +13,6 @@ class ItemSeeder extends Seeder
     public function run()
     {
         //
+        factory(Item::class, 200)->create();
     }
 }
