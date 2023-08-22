@@ -2,6 +2,6 @@
 
 namespace App\Interfaces;
 
-class EmployeeInterface
+interface EmployeeInterface
 {
 }

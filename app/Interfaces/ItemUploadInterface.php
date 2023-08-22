@@ -2,6 +2,6 @@
 
 namespace App\Interfaces;
 
-class ItemUploadInterface
+interface ItemUploadInterface
 {
 }
