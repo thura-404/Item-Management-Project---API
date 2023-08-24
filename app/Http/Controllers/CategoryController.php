@@ -2,19 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\CategoryInterface;
 use App\models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    private $categoryInterface;
+
+    public function __construct(CategoryInterface $categoryInterface)
+    {
+        $this->categoryInterface = $categoryInterface;
+    }
+
+
     /**
-     * Display a listing of the resource.
+     * get all the categories.
      *
+     * @create  05/05/2022
+     * @author  Thrua Win
+     * @param   ---
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
+        try {
+            $categories = $this->categoryInterface->getAllCategories();
+
+            return response()->json(["categories" => $categories, "status" => 200]);
+        } catch (\Throwable $th) {
+            return response()->json(["message" => $th->getMessage(), "status" => 500]);
+        }
     }
 
     /**

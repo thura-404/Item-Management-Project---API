@@ -17,6 +17,6 @@ class ItemRepository implements ItemInterface
   public function getAllItems()
   {
     // return all the items.
-    return Item::get();
+    return Item::paginate(20);
   }
 }

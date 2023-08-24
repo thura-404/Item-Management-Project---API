@@ -38,7 +38,7 @@ class ItemController extends Controller
         try {
             // get all the items.
             $items = $this->itemInterface->getAllItems();
-            Log::info(["get all the items.", $items]);
+
 
             // return all the items as the json obj.
             return response()->json(["items" => $items, "status" => 200]);
