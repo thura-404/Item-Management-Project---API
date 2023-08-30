@@ -37,11 +37,35 @@ class ItemController extends Controller
         //
         try {
             // get all the items.
-            $items = $this->itemInterface->getAllItems();
+            $items = $this->itemInterface->getItemsForIndex();
 
 
             // return all the items as the json obj.
             return response()->json(["items" => $items, "status" => 200]);
+        } catch (\Throwable $e) {
+            //throw $th;
+            return response()->json(["Error" => $e->getMessage(), "status" => 500]);
+        }
+    }
+
+    /**
+     * get all the items from the database.
+     * @date    22/08/2023
+     * @author  Thura Win
+     * @param   ---
+     * @return  json -> items.
+     */
+    public function search(Request $request)
+    {
+        //
+        try {
+
+            $query = $request->all(); // get the query parameter.
+
+            $items = $this->itemInterface->searchItems($query); // get the items.
+
+            // return all the items as the json obj.
+            return response()->json(["results" => $items, "status" => 200]);
         } catch (\Throwable $e) {
             //throw $th;
             return response()->json(["Error" => $e->getMessage(), "status" => 500]);

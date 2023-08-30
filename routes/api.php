@@ -21,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::get("/items", "ItemController@index");
 
 Route::get('/categories', 'CategoryController@index');
+
+Route::get('/search-items', 'ItemController@search');
